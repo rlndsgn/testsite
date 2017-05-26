@@ -1,856 +1,211 @@
-<!DOCTYPE HTML>
-<html lang="">
+<!DOCTYPE html>
+<html>
 
 <head>
     <meta charset="UTF-8">
-    <title>EDIT THIS</title>
-</head>
-
-  <style>@charset "utf-8";
-
-/* ///////////////////////////////////// CSS RESET */
-
-* {
+    <title>title</title>
+    <link rel="stylesheet" type="text/css" href="adaptive.css">
+    <style>
+    * {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    border: 0;
-    box-sizing: border-box;
-    font-family: "Open Sans", "Myriad Set Pro", "Helvetica Neue", "Helvetica", "Arial", "Verdana", "sans-serif";
-    text-rendering: optimizeLegibility;
+}
+
+html {
+    background-color: #f5f5f5;
 }
 
 
-/* ///////////////////////////////////// FONT AND SELECTION */
+/* basic stylings ------------------------------------------ */
 
-::-moz-selection {
-    /* Code for Firefox */
-    color: #ffffff;
-    background: #313131;
+.container {
+    font-family: 'Roboto';
+    max-width: 600px;
+    margin: 30px auto;
+    display: block;
+    background: #FFF;
+    padding: 64px 80px;
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.16);
 }
 
-::selection {
-    color: #ffffff;
-    background: #313131;
+h1 {
+    margin-bottom: 50px;
+}
+
+h1 small {
+    font-weight: normal;
+    color: #888;
+    display: block;
+    font-size: 22px;
 }
 
 
-/* ///////////////////////////////////// GRID SYSTEM */
+/* form starting stylings ------------------------------- */
 
-.coll-1 {
-    width: 8.33%;
+.group {
+    position: relative;
+    margin-bottom: 48px;
 }
 
-.coll-2 {
-    width: 16.66%;
+input {
+    font-size: 16px;
+    padding: 10px;
+    display: block;
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #757575;
 }
 
-.coll-3 {
-    width: 25%;
+input:focus {
+    outline: none;
 }
 
-.coll-4 {
-    width: 33.33%;
+
+/* LABEL ======================================= */
+
+label {
+    color: #999;
+    font-size: 16px;
+    font-weight: normal;
+    position: absolute;
+    pointer-events: none;
+    top: 10px;
+    transition: 0.15s ease-in-out all;
+    -moz-transition: 0.15s ease-in-out all;
+    -webkit-transition: 0.15s ease-in-out all;
 }
 
-.coll-5 {
-    width: 41.66%;
+::-webkit-input-placeholder {
+    /* Chrome/Opera/Safari */
+    color: rgba(255, 255, 255, 0);
 }
 
-.coll-6 {
+input:focus::-webkit-input-placeholder {
+    color: #d1d1d1;
+}
+
+input:focus:-moz-placeholder {
+    color: #d1d1d1;
+}
+
+
+/* FF 4-18 */
+
+input:focus::-moz-placeholder {
+    color: #d1d1d1;
+}
+
+
+/* FF 19+ */
+
+input:focus:-ms-input-placeholder {
+    color: #d1d1d1;
+}
+
+
+/* IE 10+ */
+
+
+/* active state */
+
+input:focus~label,
+input:valid~label {
+    top: -20px;
+    font-size: 12px;
+    color: #5264AE;
+}
+
+
+/* BOTTOM BARS ================================= */
+
+.bar {
+    position: relative;
+    display: block;
+    width: 100%;
+}
+
+.bar:before,
+.bar:after {
+    content: '';
+    height: 1px;
+    width: 0;
+    bottom: 1px;
+    position: absolute;
+    background: #5264AE;
+    transition: 0.2s ease all;
+    -moz-transition: 0.2s ease all;
+    -webkit-transition: 0.2s ease all;
+}
+
+.bar:before {
+    left: 50%;
+}
+
+.bar:after {
+    right: 50%;
+}
+
+
+/* active state */
+
+input:focus~.bar:before,
+input:focus~.bar:after {
     width: 50%;
 }
 
-.coll-7 {
-    width: 58.33%;
-}
-
-.coll-8 {
-    width: 66.66%;
-}
-
-.coll-9 {
-    width: 75%;
-}
-
-.coll-10 {
-    width: 83.33%;
-}
-
-.coll-11 {
-    width: 91.66%;
-}
-
-.coll-12 {
-    width: 100%;
-}
-
-
-/* 2.3 txt aligns */
-
-.txtcentr {
-    text-align: center;
-}
-
-.txtleft {
-    text-align: left;
-}
-
-.txtright {
-    text-align: right;
-}
-
-.txtjust {
-    text-align: justify;
-}
-
-
-/* ///////////////////////////////////// POSITIONING */
-
-.centr {
-    margin: 0 auto;
-}
-
-[class*="flex-"] {
-    -webkit-box-flex: 1;
-    -ms-flex-positive: 1;
-    flex-grow: 1;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-flex: 1;
-    -webkit-flex-grow: 1;
-    -ms-flex-positive: 1;
-}
-
-.flex {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-}
-
-.flex-baseline {
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-    -webkit-box-align: baseline;
-    -ms-flex-align: baseline;
-    -ms-grid-row-align: baseline;
-    align-items: baseline;
-    -ms-flex-line-pack: center;
-    align-content: center;
-}
-
-.flex-t-l {
-    -webkit-box-pack: start;
-    -ms-flex-pack: start;
-    justify-content: flex-start;
-    -webkit-box-align: start;
-    -ms-flex-align: start;
-    -ms-grid-row-align: flex-start;
-    align-items: flex-start;
-    -ms-flex-line-pack: start;
-    align-content: flex-start;
-}
-
-.flex-t-c {
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-    -webkit-box-align: start;
-    -ms-flex-align: start;
-    -ms-grid-row-align: flex-start;
-    align-items: flex-start;
-    -ms-flex-line-pack: start;
-    align-content: flex-start;
-}
-
-.flex-t-r {
-    -webkit-box-pack: end;
-    -ms-flex-pack: end;
-    justify-content: flex-end;
-    -webkit-box-align: start;
-    -ms-flex-align: start;
-    -ms-grid-row-align: flex-start;
-    align-items: flex-start;
-    -ms-flex-line-pack: start;
-    align-content: flex-start;
-}
-
-.flex-c-l {
-    -webkit-box-pack: start;
-    -ms-flex-pack: start;
-    justify-content: flex-start;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    -ms-grid-row-align: center;
-    align-items: center;
-    -ms-flex-line-pack: center;
-    align-content: center;
-}
-
-.flex-c-c {
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    -ms-grid-row-align: center;
-    align-items: center;
-    -ms-flex-line-pack: center;
-    align-content: center;
-}
-
-.flex-c-r {
-    -webkit-box-pack: end;
-    -ms-flex-pack: end;
-    justify-content: flex-end;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    -ms-grid-row-align: center;
-    align-items: center;
-    -ms-flex-line-pack: center;
-    align-content: center;
-}
-
-.flex-b-l {
-    -webkit-box-pack: start;
-    -ms-flex-pack: start;
-    justify-content: flex-start;
-    -webkit-box-align: end;
-    -ms-flex-align: end;
-    -ms-grid-row-align: flex-end;
-    align-items: flex-end;
-    -ms-flex-line-pack: end;
-    align-content: flex-end;
-}
-
-.flex-b-c {
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-    -webkit-box-align: end;
-    -ms-flex-align: end;
-    -ms-grid-row-align: flex-end;
-    align-items: flex-end;
-    -ms-flex-line-pack: end;
-    align-content: flex-end;
-}
-
-.flex-b-r {
-    -webkit-box-pack: end;
-    -ms-flex-pack: end;
-    justify-content: flex-end;
-    -webkit-box-align: end;
-    -ms-flex-align: end;
-    -ms-grid-row-align: flex-end;
-    align-items: flex-end;
-    -ms-flex-line-pack: end;
-    align-content: flex-end;
-}
-
-.flex-column {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: column;
-    flex-direction: column;
-}
-
-.flex-wrap {
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
-}
-
-.flex-dist {
-    justify-content: space-between;
-}
-
-.flex-align-top {
-    -ms-flex-item-align: start;
-    align-self: flex-start;
-}
-
-.flex-align-bottom {
-    -ms-flex-item-align: end;
-    align-self: flex-end;
-}
-
-
-/* ///////////////////////////////////// MAGENTO FIXES */
-
-.breadcrumbs {
-    display: none;
-}
-
-.full-width-landing {
-    overflow: hidden;
-}
-
-.catalog-product-view .fullwidth-product .col-main .product-collateral .box-collateral.box-description.full-width .std .full-width-landing {
-    overflow: hidden;
-    margin: -38px -20px -48px -20px !important;
-    width: 100%;
-}
-
-
-/* ///////////////////////////////////// 1. BASIC BLOCKS */
-
-.full {
-    width: 100%;
-    min-height: inherit;
-}
-
-.wrap {
-    max-width: 999px;
-    min-height: inherit;
-    margin: 0 auto;
-}
-
-.boxx {
-    padding: 2.8em;
-}
-
-.section-line {
-    display: block;
-    margin: 1em auto;
-    background-color: rgba(195, 195, 195, 0.84);
-    height: 1px;
-    width: 70px;
-}
-
-
-/* ///////////////////////////////////// iMAG BUTTON */
-
-.img-imag {
-    background-image: url(http://www.istyle.eu/media/wysiwyg/HU/landing-img/beoplay/p2/imag-cover.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: 50% 50%;
-    min-height: 450px;
-}
-
-.buttox {
-    margin: 2em auto;
-    max-width: 300px;
-}
-
-.imag-btn-holder {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    min-height: 43px;
-    width: 100%;
-    background-color: #ffffff;
-    border-radius: 4px;
-    -webkit-transition: 140ms ease-in-out;
-    transition: 140ms ease-in-out;
-    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.6);
-}
-
-.logoph {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-    min-height: 43px;
-    width: 75px;
-    background: #E21937;
-    border-radius: 4px 0px 0px 4px;
-}
-
-.imaglogo {
-    background-image: url(http://istyleprod.s3.amazonaws.com/HU/landing_img/logos/imag-logo-white2.svg);
-    background-size: 39px;
-    background-position: center center;
-    background-repeat: no-repeat;
-    height: 25px;
-    width: 39px;
-    margin: 4px auto;
-    overflow: visible;
-}
-
-.imagtxthold {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-    width: 100%;
-    border-radius: 0px 4px 4px 0px;
-    padding: 15px 10px;
-}
-
-.imagtxt {
-    font-size: 10pt;
-    font-weight: 600;
-    color: #000000;
-}
-
-.imag-btn-holder:hover {
-    background: #E21937;
-    box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.33);
-}
-
-.imag-btn-holder:hover .imagtxt {
-    color: #ffffff;
-}
-
-.txttbox-01 {
-    background: linear-gradient(to right, rgba(70, 70, 70, 0.45) 0%, rgb(98, 98, 98) 100%);
-    border-radius: 10px;
-}
-
-.txttbox-02 {
-    background: linear-gradient(to right, rgba(86, 117, 159, 0.45) 0%, rgb(34, 71, 123) 100%);
-    border-radius: 10px;
-}
-
-.txttbox-03 {
-    background: linear-gradient(to right, rgba(244, 176, 176, 0.61) 0%, rgb(209, 62, 96) 100%);
-    border-radius: 10px;
-}
-
-.txttbox-04 {
-    background: linear-gradient(to right, rgba(63, 100, 203, 0.61) 0%, rgb(59, 59, 59) 100%);
-    border-radius: 10px;
-}
-
-.txttbox-05 {
-    background: linear-gradient(to right, rgba(203, 122, 63, 0.36) 0%, rgb(255, 158, 158) 100%);
-    border-radius: 10px;
-}
-
-
-/* ///////////////////////////////////// TYPOGRAPHY */
-
-.cat-tag {
-    font-weight: 100;
-    font-size: 9pt;
-    line-height: 1.25em;
-    /*    text-transform: uppercase;*/
-    margin-bottom: 0em;
-    color: #ffffff;
-}
-
-.superliner {
-    font-weight: 100;
-    font-size: 36pt;
-    line-height: 1.3em;
-    text-transform: none;
-    margin-bottom: 0em;
-    color: #ffffff;
-}
-
-.headliner {
-    font-weight: 100;
-    font-size: 24pt;
-    line-height: 1.4em;
-    text-transform: none;
-    margin-bottom: 1.75em;
-    color: #ffffff;
-}
-
-.subliner {
-    font-weight: 100;
-    font-size: 14pt;
-    line-height: 1.2em;
-    margin-bottom: 0.5em;
-    color: #ffffff;
-}
-
-.parag {
-    font-weight: 100;
-    font-size: 11pt;
-    line-height: 1.5em;
-    margin-bottom: 0em;
-    color: #ffffff;
-}
-
-.added {
-    font-weight: 100;
-    font-size: 9pt;
-    line-height: 1.5em;
-    color: #585858;
-    margin: .2em 0;
-}
-
-.added a {
-    text-decoration: none;
-    color: #a21818;
-}
-
-.legal {
-    border-top: 1px solid #9f9f9f;
-    border-bottom: 1px solid #9f9f9f;
-    /*    margin: 1em 0;*/
-}
-
-
-/* ///////////////////////////////////// LINKS AND LISTS */
-
-a {
-    text-decoration: none;
-}
-
-.legal a:hover {
-    text-decoration: underline;
-}
-
-sup {
-    font-size: 6pt;
-    color: rgb(255, 0, 0);
-}
-
-.boxx ul li {
-    list-style: disc;
-    margin-left: 14pt;
-}
-
-.boxx ul li li {
-    list-style: circle;
-    color: #5c5c5c;
-}
-
-
-/* ///////////////////////////////////// BUTTONS-LINKS */
-
-.ibutton span {
-    font-weight: 100;
-    font-size: 10pt;
-    line-height: 1.5em;
-}
-
 .ibutton {
-    cursor: pointer;
-    -webkit-transition: 120ms ease-in-out;
+    background-color: #3ed48f;
+    border-bottom: none;
+    color: white;
+    border-radius: 2px;
     transition: 120ms ease-in-out;
-    min-width: 9em;
-    min-height: 33px;
-    margin: 2em 0 0 0;
-    padding: 0.4em 3em;
-    border-radius: 4px;
-    border: none;
-    outline: none;
-    background-color: rgb(0, 0, 0);
-    color: #ffffff;
 }
 
 .ibutton:hover {
-    background-color: #ffffff;
-    color: #000000;
+    transform: scale(1.01);
+    background-color: #3ed48f;
+    border-bottom: none;
+    color: white;
+    border-radius: 2px;
+    box-shadow: 0 4px 10px rgba(3, 78, 44, 0.24);
 }
 
+    </style>
+</head>
 
-/* ///////////////////////////////////// COLORS / COLORIZERS */
-
-.white {
-    background-color: #ffffff;
-}
-
-.txtwhite {
-    color: #ffffff;
-}
-
-
-/* ///////////////////////////////////// IMAGES */
-
-.img-01 {
-    background-image: url(http://www.istyle.eu/media/wysiwyg/HU/landing-img/beoplay/p2/img-01.jpeg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: 50% 50%;
-    min-height: 550px;
-}
-
-.img-02 {
-    background-image: url(http://www.istyle.eu/media/wysiwyg/HU/landing-img/beoplay/p2/img-02.jpeg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: 50% 50%;
-    min-height: 550px;
-}
-
-.img-03 {
-    background-image: url(http://www.istyle.eu/media/wysiwyg/HU/landing-img/beoplay/p2/img-03.jpeg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: 50% 50%;
-    min-height: 550px;
-}
-
-.img-04 {
-    background-image: url(http://www.istyle.eu/media/wysiwyg/HU/landing-img/beoplay/p2/img-04.jpeg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: 50% 50%;
-    min-height: 550px;
-}
-
-.img-05 {
-    background-image: url(http://www.istyle.eu/media/wysiwyg/HU/landing-img/beoplay/p2/img-05.jpeg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: 50% 50%;
-    min-height: 550px;
-}
-
-.img-06 {
-    background-image: url(http://www.istyle.eu/media/wysiwyg/HU/landing-img/beoplay/p2/img-06.jpeg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: 50% 50%;
-    min-height: 550px;
-}
-
-.img-07 {
-    background-image: url(http://www.istyle.eu/media/wysiwyg/HU/landing-img/beoplay/p2/img-07.jpeg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: 50% 50%;
-    min-height: 550px;
-}
-
-.img-08 {
-    background-image: url(http://www.istyle.eu/media/wysiwyg/HU/landing-img/beoplay/p2/img-08.jpeg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: 50% 50%;
-    min-height: 550px;
-}
-
-
-/* /////////////////////////////////////  TABLET VIEW */
-
-@media only screen and (max-width: 997px) {
-    /* /////////////////////////////////////////////////////////////////////// MAGENTO FIXES */
-    .catalog-product-view .fullwidth-product .col-main .product-collateral .box-collateral.box-description.full-width .std .full-width-landing {
-        margin: -58px -20px -68px -20px !important;
-    }
-    /* /////////////////////////////////////////////////////////////////////// GRID SYSTEM */
-    .tcoll-1 {
-        width: 8.33%;
-    }
-    .tcoll-2 {
-        width: 16.66%;
-    }
-    .tcoll-3 {
-        width: 25%;
-    }
-    .tcoll-4 {
-        width: 33.33%;
-    }
-    .tcoll-5 {
-        width: 41.66%;
-    }
-    .tcoll-6 {
-        width: 50%;
-    }
-    .tcoll-7 {
-        width: 58.33%;
-    }
-    .tcoll-8 {
-        width: 66.66%;
-    }
-    .tcoll-9 {
-        width: 75%;
-    }
-    .tcoll-10 {
-        width: 83.33%;
-    }
-    .tcoll-11 {
-        width: 91.66%;
-    }
-    .tcoll-12 {
-        width: 100%;
-    }
-    [class*="flex-"] {
-        -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-        width: 100%;
-    }
-    /* /////////////////////////////////////////////////////////////////////// BLOCKS */
-    .wrap {
-        max-width: 663px;
-    }
-    .boxx {
-        padding: 2em;
-    }
-    /* ///////////////////////////////////////////////////////////////////////  TYPOGRAPHY */
-    .cat-tag {
-        font-size: 9pt;
-    }
-    .superliner {
-        font-size: 30pt;
-    }
-    .headliner {
-        font-size: 20pt;
-    }
-    .subliner {
-        font-size: 14pt;
-    }
-    .parag {
-        font-size: 11pt;
-    }
-    .added {
-        font-size: 9pt;
-    }
-}
-
-
-/* /////////////////////////////////////  MOBILE VIEW */
-
-@media only screen and (max-width: 600px) {
-    /* ///////////////////////////////////////////////////////////////////////  GRID */
-    [class*="coll-"] {
-        text-align: center;
-        width: 100%;
-    }
-    /* ///////////////////////////////////////////////////////////////////////  BLOCKS */
-    [class*="boxx"] {
-        -webkit-box-ordinal-group: 3;
-        -ms-flex-order: 2;
-        order: 2;
-        padding: 1.5em;
-    }
-    /* ///////////////////////////////////////////////////////////////////////  TYPOGRAPHY */
-    .boxx ul {
-        text-align: left;
-    }
-    /* ///////////////////////////////////////////////////////////////////////  IMAGES */
-    [class*="full"] {}
-    [class*="img-"] {
-        -webkit-box-ordinal-group: 1;
-        -ms-flex-order: 1;
-        order: 1;
-        min-height: inherit;
-    }
-    [class*="txttbox-"] {
-        border-radius: 0px;
-    }
-}
-</style>
-  
 <body>
+    <div class="container">
 
+        <h1>Modern inputs<small>following best practises</small></h1>
 
-    <!--------------------------------------START------------------------------------------>
-    <div class="full-width-landing">
+        <form>
 
-        <!-- IMAG BTN start -->
-        <div class="full img-imag">
-            <div class="wrap flex-c-c">
-                <div class="boxx coll-12 txtcentr">
-                    <div class="headliner txtwhite">Olvasd el a termék tesztjét az iMagazinon</div>
-
-                    <div class="buttox">
-                        <a href="http://imagazin.hu/beoplay-p2-a-zenelo-kavics/" target="_blank">
-                            <div class="imag-btn-holder centr">
-                                <div class="logoph">
-                                    <div class="imaglogo"></div>
-                                </div>
-                                <div class="imagtxthold">
-                                    <div class="imagtxt">iMagazin | Beoplay P2</div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-
-                </div>
+            <div class="group">
+                <input type="text" required autocomplete="on" placeholder="e.g, Roland Mészáros">
+                <span class="bar"></span>
+                <label>Name</label>
             </div>
-        </div>
-        <!-- IMAG BTN start -->
 
-
-
-        <!-- SIMPLE BLOCK txt-pic start -->
-        <div class="full img-01">
-            <div class="wrap flex-c-l">
-                <div class="boxx coll-6 tcoll-8 txttbox-01">
-                    <div class="cat-tag">TRULY PORTABLE</div>
-                    <div class="headliner">AMPLIFY ANYWHERE</div>
-                    <div class="subliner">Splash and dust resistant design.</div>
-                    <div class="parag">Take Beoplay P2 with you wherever you go, all thanks to splash and dust resistant drivers inside the speaker and a tightly sealed casing of aluminium and polymer. And weighing in at a very light 275 grams, it fits easily in your pocket or bag.</div>
-                </div>
+            <div class="group">
+                <input type="email" required placeholder="e.g., m.roland@gmail.com">
+                <span class="bar"></span>
+                <label>Email</label>
             </div>
-        </div>
-        <!-- SIMPLE BLOCK txt-pic end -->
 
-
-        <!-- SIMPLE BLOCK txt-pic start -->
-        <div class="full img-02">
-            <div class="wrap flex-c-l">
-                <div class="boxx coll-6 tcoll-8 txttbox-02">
-                    <div class="cat-tag">SMART FEATURES</div>
-                    <div class="headliner">FEATURES VIA BEOPLAY APP</div>
-                    <div class="subliner">Shake and tap to customize.</div>
-                    <div class="parag">No switches or buttons required. A quick shake or an double tap will activate Beoplay P2’s smart features. Play, pause or skip tracks, launch your favourite personal assistant or get Beoplay App to wake you up with the same music you were listening to yesterday evening.</div>
-                </div>
+            <div class="group">
+                <input type="tel" name="home-phone" name="iphone" name="work-phone" required placeholder="e.g., +36 (20) 892 8292">
+                <span class="bar"></span>
+                <label>Phone number</label>
             </div>
-        </div>
-        <!-- SIMPLE BLOCK txt-pic end -->
 
-        <!-- SIMPLE BLOCK txt-pic start -->
-        <div class="full img-03">
-            <div class="wrap flex-c-l">
-                <div class="boxx coll-6 tcoll-8 txttbox-03">
-                    <div class="cat-tag">SOUND</div>
-                    <div class="headliner">OUTSTANDING PERFORMANCE</div>
-                    <div class="subliner">Rich and spacious Bang & Olufsen Signature Sound.</div>
-                    <div class="parag">Thanks to Bang & Olufsen Signature Sound, Beoplay P2 delivers a rich spacious sound and good definition of bass and kick drums. The speaker is supported by a new, mid-woofer driver and a peak power of more than 2 x 50 Watts. A built in microphone can be used for calls and voice activation.</div>
-                </div>
-            </div>
-        </div>
-        <!-- SIMPLE BLOCK txt-pic end -->
+            <input class="ibutton" type="submit" value="Submit">
 
-
-        <!-- SIMPLE BLOCK txt-pic start -->
-        <div class="full img-04">
-            <div class="wrap flex-c-l">
-                <div class="boxx coll-6 tcoll-8 txttbox-04">
-                    <div class="cat-tag">MATERIALS</div>
-                    <div class="headliner">PREMIUM DURABLE MATERIALS</div>
-                    <div class="subliner">Crafted aluminium, leather and polymer.</div>
-                    <div class="parag">Like a pebble you find on the beach, the appearance of Beoplay P2 is rounded, smooth and fits perfectly in the palm of your hand. On the outside, premium crafted materials make up the strong casing of Beoplay P2 with a pearl blasted anodized aluminium grill over the speaker and durable polymer underneath.<br> Available in Black, Sand Stone or Royal Blue colours.</div>
-                </div>
-            </div>
-        </div>
-        <!-- SIMPLE BLOCK txt-pic end -->
-
-        <!-- SIMPLE BLOCK txt-pic start -->
-        <div class="full img-05">
-            <div class="wrap flex-c-l">
-                <div class="boxx coll-6 tcoll-8 txttbox-05">
-                    <div class="cat-tag">BATTERY</div>
-                    <div class="headliner">UP TO 10 HOURS OF BATTERY LIFE</div>
-                    <div class="subliner">Smart charging with USB-C cable.</div>
-                    <div class="parag">Beoplay P2 gives you music non-stop for up to 10 hours on one battery charge – enough for a party. And there’s no need to switch it off. With a 15 minute stand-by function, you save battery and can keep your music going for longer.</div>
-                </div>
-            </div>
-        </div>
-        <!-- SIMPLE BLOCK txt-pic end -->
-
-
-        <!-- SIMPLE BLOCK txt-pic start -->
-        <div class="full img-06">
-            <div class="wrap flex-c-l">
-            </div>
-        </div>
-        <!-- SIMPLE BLOCK txt-pic end -->
-
-
+        </form>
 
     </div>
-    <!--------------------------------------END------------------------------------------>
-
-
 </body>
 
 </html>
