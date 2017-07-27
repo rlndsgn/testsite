@@ -3,8 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>title</title>
-    <link rel="stylesheet" type="text/css" href="adaptive.css">
+    <title>Modern inputs</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
         <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
@@ -35,14 +34,17 @@ html {
 }
 
 h1 {
-    margin-bottom: 50px;
+    font-size: 32px;
+    margin-bottom: 0.1em;
+    color: #343434;
 }
 
-h1 small {
-    font-weight: normal;
-    color: #888;
+h2 {
+    font-weight: lighter;
+    color: #c7c7c7;
     display: block;
-    font-size: 22px;
+    font-size: 20px;
+    margin-bottom: 1.85em;
 }
 
 
@@ -59,7 +61,7 @@ input {
     display: block;
     width: 100%;
     border: none;
-    border-bottom: 1px solid #757575;
+    border-bottom: 1px solid #a0a0a0;
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
@@ -68,6 +70,7 @@ input {
 
 input:focus {
     outline: none;
+    border-bottom: 1px solid #3ed48f;
 }
 
 
@@ -90,15 +93,15 @@ select:-webkit-autofill:focus {
 /* LABEL ======================================= */
 
 label {
-    color: #999;
+    color: #a0a0a0;
     font-size: 16px;
     font-weight: normal;
     position: absolute;
     pointer-events: none;
     top: 10px;
-    transition: 0.15s ease-in-out all;
-    -moz-transition: 0.15s ease-in-out all;
-    -webkit-transition: 0.15s ease-in-out all;
+    transition: 0.25s ease-in-out all;
+    -moz-transition: 0.25s ease-in-out all;
+    -webkit-transition: 0.25s ease-in-out all;
 }
 
 ::-webkit-input-placeholder {
@@ -157,7 +160,7 @@ input:valid~label {
     width: 0;
     bottom: 1px;
     position: absolute;
-    background: #5264AE;
+    background: #3ed48f;
     transition: 0.2s ease all;
     -moz-transition: 0.2s ease all;
     -webkit-transition: 0.2s ease all;
@@ -191,12 +194,12 @@ input:focus~.bar:after {
 .ibutton:hover {
     -webkit-transform: scale(1.01);
     transform: scale(1.01);
-    background-color: #3ed48f;
+    background-color: #46de98;
     border-bottom: none;
     color: white;
     border-radius: 2px;
-    -webkit-box-shadow: 0 4px 10px rgba(3, 78, 44, 0.24);
-    box-shadow: 0 4px 10px rgba(3, 78, 44, 0.24);
+    -webkit-box-shadow: 0 4px 10px -4px rgba(20, 159, 96, 0.24);
+    box-shadow: 0 4px 10px -4px rgba(20, 159, 96, 0.24);
 }
 
 @media only screen and (max-width: 600px) {
@@ -209,6 +212,20 @@ input:focus~.bar:after {
         -webkit-box-shadow: 0 8px 24px rgba(0, 0, 0, 0.16);
         box-shadow: 0 8px 24px rgba(0, 0, 0, 0.16);
     }
+    input {
+        padding: 14px 10px;
+    }
+    label {
+        position: absolute;
+        top: 16px;
+    }
+    /* active state */
+    input:focus~label,
+    input:valid~label {
+        top: -14px;
+        font-size: 12px;
+        color: #5264AE;
+    }
 }
  </style>
 </head>
@@ -216,7 +233,8 @@ input:focus~.bar:after {
 <body>
     <div class="container">
 
-        <h1>Modern inputs<small>following best practises</small></h1>
+        <h1>Modern inputs</h1>
+        <h2>following best practises</h2>
 
         <form>
 
@@ -243,6 +261,7 @@ input:focus~.bar:after {
         </form>
 
     </div>
+
 </body>
 
 </html>
